@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aff_last_param.c                                   :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 16:27:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/11/15 16:27:56 by tmaluh           ###   ########.fr       */
+/*   Created: 2018/11/15 16:58:16 by tmaluh            #+#    #+#             */
+/*   Updated: 2018/11/15 16:59:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../../includes/lft_str.h"
 
-void	affl(const char *str)
+char	*ft_strcpy(char *dest, const char *str)
 {
-	while (*str)
-		write(1, str++, 1);
-}
+	size_t	i;
 
-int		main(int argc, char const *argv[])
-{
-	--argc;
-	++argv;
-	if (argc)
-		affl(argv[argc - 1]);
-	write(1, "\n", 1);
+	i = -1;
+	while (str[++i] != '\0')
+		dest[i] = str[i];
+	dest[i] = '\0';
+	return (dest);
 }

@@ -18,12 +18,11 @@ void	aff_fp(const char *str)
 		write(1, str++, 1);
 }
 
-int	main(int argc, char const *argv[])
+int		main(int argc, char const *argv[])
 {
-	argc--;
-	argv++;
+	--argc;
+	++argv;
 	if (argc)
 		aff_fp(*argv);
 	write(1, "\n", 1);
-	return 0;
 }
