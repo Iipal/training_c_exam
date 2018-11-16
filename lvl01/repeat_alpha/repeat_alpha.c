@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int		isalpha(int c)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')); 
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
 void	ra(const char *str)
@@ -27,7 +26,10 @@ void	ra(const char *str)
 	{
 		if (isalpha(*str))
 		{
-			(*str >= 'a' && *str <= 'z') ? (i = *str - 96) : (i = *str - 64);
+			if ((*str >= 'a') && (*str <= 'z'))
+				i = *str - 96;
+			else
+				i = *str - 64;
 			while (i-- > 0)
 				write(1, str, 1);
 		}
@@ -42,5 +44,4 @@ int		main(int argc, char const *argv[])
 	if (argc == 1)
 		ra(*argv);
 	write(1, "\n", 1);
-	return 0;
 }
