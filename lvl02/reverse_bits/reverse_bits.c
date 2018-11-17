@@ -14,18 +14,15 @@
 
 unsigned char	reverse_bits(unsigned char octet)
 {
-	unsigned char	r = 0;
-	unsigned		byte_len = 8;
+	unsigned char	r;
+	unsigned		byte_len;
 
+	r = 0;
+	byte_len = 8;
 	while (byte_len--)
 	{
 		r = (r << 1) | (octet & 1);
 		octet >>= 1;
 	}
 	return (r);
-}
-
-int		main(void)
-{
-	printf("%d\n", (int)reverse_bits(142));
 }

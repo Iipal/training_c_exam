@@ -1,41 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:23:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/11/16 11:23:29 by tmaluh           ###   ########.fr       */
+/*   Created: 2018/11/17 09:25:24 by tmaluh            #+#    #+#             */
+/*   Updated: 2018/11/17 09:25:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		iter(char *str, char c, int len)
+int		ft_strlen(const char *str)
 {
 	int		i;
 
 	i = -1;
-	while (str[++i] && (i < len || len == -1))
-		if (str[i] == c)
-			return (1);
-	return (0);
+	while (str[++i])
+		;
+	return (i);
 }
 
-int		main(int argc, char *argv[])
+void	ft_putstr(const char *str)
 {
-	int		i;
+	while (*str)
+		write(1, str++, 1);
+}
 
+void	wdmatch(const char *niddle, const char *haystack)
+{
+	int		len;
+	int		counter;
+
+	len = ft_strlen(niddle);
+	counter = 0;
+	while (*haystack)
+		if (!(*(haystack++) ^ *niddle))
+		{
+			++niddle;
+			++counter;
+		}
+	if (counter ^ len)
+		return ;
+	ft_putstr(niddle - counter);
+}
+
+int		main(int argc, char const *argv[])
+{
 	--argc;
 	++argv;
 	if (argc == 2)
-	{
-		i = -1;
-		while (argv[0][++i])
-			if (!iter(argv[0], argv[0][i], i) && iter(argv[1], argv[0][i], -1))
-				write(1, &argv[0][i], 1);
-	}
+		wdmatch(*argv, *(argv + 1));
 	write(1, "\n", 1);
-	return (0);
 }
