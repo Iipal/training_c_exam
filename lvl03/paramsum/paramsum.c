@@ -32,11 +32,3 @@ void	ft_putnbr(int nb)
 	if (nb < 10)
 		ft_putchar(nb % 10 + '0');
 }
-
-int		main(int argc, char const *argv[])
-{
-	--argc;
-	++argv;
-	ft_putnbr(argc);
-	write(1, "\n", 1);
-}
