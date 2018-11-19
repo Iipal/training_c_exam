@@ -24,8 +24,13 @@ int		ft_atoi(const char *str)
 	if (*str == '-' || *str == '+')
 		++str;
 	while (*str >= '0' && *str <= '9')
-		n = (n << 5) + *(str++) - '0';
+		n = ((n << 3) + (n << 1)) + *(str++) - '0';
 	if (sign)
 		n = -n;
 	return (n);
+}
+#include <stdio.h>
+int		main(void)
+{
+	printf("%d\n", ft_atoi("42"));
 }
