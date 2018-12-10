@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brackets.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ipal <ipal@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 11:23:06 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/12/09 18:58:16 by ipal             ###   ########.fr       */
+/*   Updated: 2018/12/10 09:53:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define ZERO	0
 # define NEG	-1
 
-# define ISDELIM1(c) (c == '{' || c == '(' || c == '[' || c == '(') ? 1 : 0
-# define ISDELIM2(c) (c == '}' || c == ')' || c == ']' || c == ')') ? 1 : 0
+# define ISDELIM1(c) (c == '{' || c == '(' || c == '[') ? true : false
+# define ISDELIM2(c) (c == '}' || c == ')' || c == ']') ? true : false
 
 # define PUTE ft_putendl("Error")
 # define PUTOK ft_putendl("OK")

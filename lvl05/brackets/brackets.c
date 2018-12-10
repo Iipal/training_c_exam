@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brackets.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ipal <ipal@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 11:23:06 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/12/09 19:20:03 by ipal             ###   ########.fr       */
+/*   Updated: 2018/12/10 09:56:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,29 @@ void	ft_putendl(string msg)
 	write(1, "\n", 1);
 }
 
-bool	brackets(cstring str)
+bool	check_delim(cstring str, char delim)
 {
-	cstring	temp;
+	while (*str)
+		if (ISDELIM2(*str))
+			break ;
+		else
+			++str;
+	_NOTIS(*str);
+	if (delim == '(')
+		_NOTIS(*str == ')');
+	if (delim == '{')
+		_NOTIS(*str == '}');
+	if (delim == '[')
+		_NOTIS(*str == ']');
+	return (true);
+}
 
-	if (!(*str))
-		return (true);
+static bool	brackets(cstring str)
+{
 	while (*str)
 	{
-		if (*str == '{')
-		{
-			temp = str;
-			while (*str && !ISDELIM2(*str))
-				++str;
-			_NOTIS(*str);
-			_NOTIS(*str == '}');
-		}
+		if (ISDELIM1(*str))
+			_NOTIS(check_delim(str + 1, *str));
 		++str;
 	}
 	return (true);
