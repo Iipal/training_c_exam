@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 12:23:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/01/05 13:09:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/01/07 01:30:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_strlen(const char *str)
 	return (i);
 }
 
-static void	ft_putstr(const char *str)
+void	ft_putstr(const char *str)
 {
 	int	i;
 
@@ -39,10 +39,26 @@ static void	ft_putstr(const char *str)
 
 static void	rostring(char *src, int len)
 {
-	if (len)
-	{
-	}
-	ft_putstr(src);
+	int		i;
+
+	i = 0;
+	while (src[i] && !((src[i] >= 9 && src[i] <= 13) || src[i] == 32))
+		++i;
+	while (((src[i] >= 9 && src[i] <= 13) || src[i] == 32))
+		++i;
+	while (src[i] && i < len)
+		if ((src[i] >= 9 && src[i] <= 13) || src[i] == 32)
+		{
+			write(1, " ", 1);
+			while (src[i] && ((src[i] >= 9 && src[i] <= 13) || src[i] == 32))
+				++i;
+		}
+		else
+			write(1, &src[i++], 1);
+	i = 0;
+	write(1, " ", 1);
+	while (src[i] && !((src[i] >= 9 && src[i] <= 13) || src[i] == 32))
+		write(1, &src[i++], 1);
 }
 
 int			main(int argc, char const *argv[])
