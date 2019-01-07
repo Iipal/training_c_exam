@@ -42,7 +42,7 @@ static void	rostring(char *src, int len)
 	int		i;
 
 	i = 0;
-	while (src[i] && !((src[i] >= 9 && src[i] <= 13) || src[i] == 32))
+	while (src[i] && !ft_isblank(src[i]))
 		++i;
 	while (((src[i] >= 9 && src[i] <= 13) || src[i] == 32))
 		++i;
